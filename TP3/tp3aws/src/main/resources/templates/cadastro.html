@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Cadastro</title>
+</head>
+<body>
+
+	<h2>Cadastro</h2>
+	<form enctype="multipart/form-data" th:object="${usuario}" th:action="@{/usuario}" method="post">
+  		<label for="nome">Nome:</label><br>
+  		<input type="text" th:name="${nome}" th:field="*{nome}" th:required="required"><br>
+  		<label for="email">Email:</label><br>
+  		<input type="email" th:name="${email}" th:field="*{email}" th:required="required"><br>
+  		<label for="telefone">Telefone:</label><br>
+  		<input type="text" th:name="${telefone}" th:field="*{telefone}" th:required="required"><br>
+  		<label for="cep">Cep:</label><br>
+  		<input type="text" th:name="${cep}" th:field="*{cep}" th:required="required"><br>  
+  		<label for="foto">Select a file:</label>
+  		<input type="file" th:name="${foto}" th:field="*{foto}" th:required="required">		
+  		<input type="submit" value="Cadastrar">
+	</form> 
+	
+	<p><a th:href="@{/}">Voltar</a></p>
+	
+</body>
+</html>

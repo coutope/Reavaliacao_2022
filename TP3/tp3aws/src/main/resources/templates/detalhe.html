@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Detalhe</title>
+</head>
+<body>
+	<h2>Informações do usuário</h2>
+	<div>
+		<p th:text="${usuario.nome}">Nome</p>
+		<p th:text="${usuario.email}">Email</p>
+		<p th:text="${usuario.telefone}">Telefone</p>
+		<p th:text="${usuario.cep}">Cep</p>
+		<p th:text="${usuario.endereco}">Endereco</p>
+		<div>
+			<img th:src="${usuario.foto}" alt="Foto">
+		</div>
+	</div>
+	<p><a th:href="@{/}">Voltar</a></p>
+</body>
+</html>

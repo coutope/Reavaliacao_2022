@@ -1,0 +1,17 @@
+amazonProperties: 
+  endpointUrl: https://s3.sa-east-1.amazonaws.com 
+  accessKey: AKIAXQS6335OX6347NU6
+  secretKey: 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
+  bucketName: dr4-s3-bucket-lucas
+  
+spring:
+  jpa:    
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MariaDBDialect
+  datasource:    
+    url: jdbc:mariadb://tp3awspedro.cd6zxyyqrofd.sa-east-1.rds.amazonaws.com:3306/tp3aws
+    username: admin
+    password: 12345678

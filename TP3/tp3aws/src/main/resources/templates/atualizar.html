@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Editar</title>
+</head>
+<body>
+
+	<h2>Editar</h2>
+	<form enctype="multipart/form-data" th:object="${usuario}" th:action="@{/usuario/editar}" method="post">
+  		<label for="nome">Nome:</label><br>
+  		<input type="text" th:name="${nome}" th:field="*{nome}" th:value="${dados.nome}" required><br>
+  		<label for="email">Email:</label><br>
+  		<input type="email" th:name="${email}" th:field="*{email}" th:value="${dados.email}" required><br>
+  		<label for="telefone">Telefone:</label><br>
+  		<input type="text" th:name="${telefone}" th:field="*{telefone}" th:value="${dados.telefone}" required><br>
+  		<label for="cep">Cep:</label><br>
+  		<input type="text" th:name="${cep}" th:field="*{cep}" th:value="${dados.cep}" required><br>  
+  		<label for="foto">Select a file:</label>
+  		<input type="file" th:name="${foto}" th:field="*{foto}" required>
+  		<input type="submit" value="Cadastrar">
+	</form> 
+	
+	<p><a th:href="@{/}">Voltar</a></p>
+
+</body>
+</html>

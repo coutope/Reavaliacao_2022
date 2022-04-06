@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Inicial</title>
+</head>
+<body>
+
+	<h3><a href="/usuario/cadastrar">Cadastrar usuario</a></h3>	
+	
+	<form th:action="@{/usuario/editar}" th:object="${emailDto}" method="get">
+		<h3>Editar usuario</h3>	
+		<input type="text"  th:name="${email}" th:field="*{email}" placeholder="Email" />
+		<input type="submit" name="botaoEditar" id="botaoEditar" value="Editar" />
+	</form>	
+	
+	<form th:action="@{/usuario/detalhe}" th:object="${emailDto}" method="get">
+		<h3>Buscar usuario</h3>	
+		<input type="text" th:name="${email}" th:field="*{email}" placeholder="Email" />
+		<input type="submit" name="botaoBuscar" value="Buscar" />
+	</form>	
+
+</body>
+</html>
