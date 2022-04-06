@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Detalhe Produto</title>
+<link rel="stylesheet" href="/css/w3.css">
+</head>
+<body>
+
+	<div class="w3-card-4" style="width:50%;">
+    	<header class="w3-container w3-black">
+      	<h3>Informações do produto</h3>
+    	</header>
+
+    	<div th:if="${product != null}" class="w3-container">
+    		<p th:text="${'Nome: ' + product.name}">Name</p>
+        	<p th:text="${'Marca: ' + product.brand}">Brand</p>
+        	<p th:text="${'Categoria: ' + product.category}">Category</p>         	
+        	<div style="text-align:center">
+				<img th:src="${product.photo}" alt="Foto">
+			</div>
+    	</div>
+    </div>
+    
+    <h4 style="margin-top: 50px;margin-left:50px;" th:if="${product == null}">Produto não encontrado!</h4>
+	<p style="margin-top: 50px;margin-left:50px;"><a th:href="@{/}">Voltar</a></p>
+	
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Cadastro</title>
+<link rel="stylesheet" href="/css/w3.css">
+</head>
+<body>
+
+	<div class="w3-card-4">
+  		<div class="w3-container w3-black">
+    		<h2>Cadastro de Cotação</h2>
+  		</div>
+  		<form class="w3-container" th:object="${cotacao}" th:action="@{/cotacao}" method="post">
+    		<p>      
+    		<label class="w3-text-black"><b>Nome do produto</b></label>
+    		<input class="w3-input w3-border" th:name="${nomeProduto}" th:field="${cotacao.produto.name}" th:required="required" type="text"></p>  
+    		<p>      
+    		<label class="w3-text-black"><b>Fornecedor</b></label>
+    		<input class="w3-input w3-border" th:name="${fornecedor}" th:field="*{fornecedor}" th:required="required" type="text"></p>
+    		<p>      
+    		<label class="w3-text-black"><b>Data</b></label>
+    		<input class="w3-input w3-border" th:name="${data}" th:field="*{data}" th:required="required" type="text" placeholder = "dd/mm/yyyy"></p>
+    		<p>      
+    		<label class="w3-text-black"><b>Preço</b></label>
+    		<input class="w3-input w3-border" th:name="${preco}" th:field="*{preco}" th:required="required" type="number" step = "0.01" min="0"></p>    		
+    		<p>
+    		<input type="submit" class="w3-btn w3-black" value="Cadastrar"></p>
+  		</form>
+	</div>	
+	
+	<table style="margin-top:50px;width:50%;margin-left:50px;" class="w3-table-all" th:if="${!nomes.empty}">
+    	<thead>
+      		<tr class="w3-black">
+        		<th>Produtos</th>
+      		</tr>
+    	</thead>
+    	<tr th:each="nome : ${nomes}">
+      		<td th:text="${nome}">Nome do produto</td>      		
+    	</tr>    
+  	</table>
+  	
+  	<h4 style="margin-top: 50px;margin-left:50px;" th:if="${nomes == null}">Não há produtos cadastrados!</h4>
+	
+	<p style="margin-top: 50px;margin-left:50px;"><a th:href="@{/}">Voltar</a></p>
+
+</body>
+</html>

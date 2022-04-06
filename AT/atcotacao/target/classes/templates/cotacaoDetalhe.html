@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Detalhe</title>
+<link rel="stylesheet" href="/css/w3.css">
+</head>
+<body>
+
+	<div class="w3-container" style="width:50%;" th:if="${cotacoes != null && cotacoes.size() > 0}">    	
+      	<h3>Informações das cotações para o produto</h3>    	
+
+	<table style="margin-top:30px;width:70%;margin-left:50px;" class="w3-table-all">
+    	<thead>
+      		<tr class="w3-black">
+      			<th>Nome</th>
+      			<th>Marca</th>
+        		<th>Fornecedor</th>
+        		<th>Data</th>
+        		<th>Preço</th>
+        		<th>Ações</th>
+      		</tr>
+    	</thead>
+    	<tr th:each="cotacao : ${cotacoes}">
+      		<td th:text="${cotacao.produto.name}">Nome</td>
+      		<td th:text="${cotacao.produto.brand}">Marca</td>
+      		<td th:text="${cotacao.fornecedor}">Fornecedor</td>
+      		<td th:text="${cotacao.data}">Data</td>
+      		<td th:text="${#numbers.formatDecimal(cotacao.preco, 1, 'DEFAULT', 2, 'DEFAULT').toString()}">0</td>
+      		<td><a th:href="@{/cotacao/deletar(id=${cotacao.id})}">Excluir</a>
+      		<a style="margin-left:20px" th:href="@{/cotacao/atualizar(id=${cotacao.id})}">Editar</a></td>
+    	</tr>    
+  	</table>
+    	
+    	<a style="margin-left:50px;margin-top:30px;" th:href="@{/cotacao/exportar(nome=${cotacoes.get(0).produto.name})}">Exportar</a>
+    </div>
+    
+    <h4 style="margin-top: 50px;margin-left:50px;" th:if="${cotacoes == null || cotacoes.size() < 1}">Nenhuma cotação foi encontrada!</h4>
+	<p style="margin-top: 50px;margin-left:50px;"><a th:href="@{/}">Voltar</a></p>
+
+</body>
+</html>

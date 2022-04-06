@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Inicial</title>
+<link rel="stylesheet" href="/css/w3.css">
+</head>
+<body>
+
+	<h3 style="margin-left:50px;"><a href="/product/create">Cadastrar produto</a></h3>	
+	
+	<div class="w3-card-4" style="margin-top:30px;width:30%;margin-left:50px;">
+  		<div class="w3-container w3-black">
+    		<h4>Editar produto</h4>
+  		</div>
+  		<form class="w3-container" th:action="@{/product/update}" th:object="${inputDto}" method="get">
+    		<p>      
+    		<label class="w3-text-black"><b>Nome</b></label>
+    		<input class="w3-input w3-border" th:name="${name}" th:field="*{name}" placeholder="Nome" th:required="required" type="text"></p>    		
+    		
+    		<p><input type="submit" class="w3-btn w3-black" value="Editar"></p>
+  		</form>
+	</div>
+	
+	<div class="w3-card-4" style="margin-top:30px;width:30%;margin-left:50px;">
+  		<div class="w3-container w3-black">
+    		<h4>Buscar produto</h4>
+  		</div>
+  		<form class="w3-container" th:action="@{/product/detail}" th:object="${inputDto}" method="get">
+    		<p>      
+    		<label class="w3-text-black"><b>Nome</b></label>
+    		<input class="w3-input w3-border" th:name="${name}" th:field="*{name}" placeholder="Nome" th:required="required" type="text"></p> 
+    		
+    		<p><input type="submit" class="w3-btn w3-black" value="Buscar"></p>
+  		</form>
+	</div>	
+	
+	<table style="margin-top:50px;width:50%;margin-left:50px;" class="w3-table-all" th:if="${!products.empty}">
+    	<thead>
+      		<tr class="w3-black">
+        		<th>Nome</th>
+        		<th>Marca</th>
+        		<th>Ações</th>
+      		</tr>
+    	</thead>
+    	<tr th:each="product : ${products}">
+      		<td th:text="${product.getName()}">Nome</td>
+      		<td th:text="${product.getBrand()}">Marca</td>
+      		<td><a style="margin-left:20px;" th:href="@{/product/detail(id=${product.getId()})}">Detalhe</a>
+            	<a style="margin-left:20px;" th:href="@{/product/update(id=${product.getId()})}">Editar</a>
+            	<a style="margin-left:20px;" th:href="@{/product/delete(id=${product.getId()})}">Excluir</a>
+      		</td>
+    	</tr>    
+  	</table>
+
+</body>
+</html>

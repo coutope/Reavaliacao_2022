@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Atualizar Produto</title>
+<link rel="stylesheet" href="/css/w3.css">
+</head>
+<body>
+
+	<div class="w3-card-4">
+  		<div class="w3-container w3-black">
+    		<h2>Editar Produto</h2>
+  		</div>
+  		<form class="w3-container" th:if="${product != null}" enctype="multipart/form-data" th:object="${product}" th:action="@{/product/update(id=${product.getId()})}" method="post">
+    		<p>      
+    		<label class="w3-text-black"><b>Nome</b></label>
+    		<input class="w3-input w3-border"  th:name="${name}" th:field="*{name}" th:value="${product.name}" th:required="required" type="text"></p>
+    		<p>      
+    		<label class="w3-text-black"><b>Marca</b></label>
+    		<input class="w3-input w3-border" th:name="${brand}" th:field="*{brand}" th:value="${product.brand}" th:required="required" type="text"></p> 
+    		<p>      
+    		<label class="w3-text-black"><b>Categoria</b></label>
+    		<input class="w3-input w3-border" th:name="${category}" th:field="*{category}" th:value="${product.category}" th:required="required" type="text"></p>     				
+    		<p>      
+    		<label class="w3-text-black"><b>Selecione um arquivo</b></label>
+    		<input class="w3-input w3-border" type="file" th:name="${photo}" th:field="*{photo}" th:required="required"></p>	
+    		<p>
+    		<input type="submit" class="w3-btn w3-black" value="Atualizar"></p>
+  		</form>
+	</div>	
+	
+	<h4 style="margin-top: 50px;margin-left:50px;" th:if="${product == null}">Produto não encontrado!</h4>
+	<p style="margin-top: 50px;margin-left:50px;"><a th:href="@{/}">Voltar</a></p>
+	
+</body>
+</html>
